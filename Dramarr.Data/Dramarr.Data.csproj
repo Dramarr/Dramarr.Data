@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Emiliano Montesdeoca</Authors>
+    <Description>Data library for Dramarr</Description>
+    <PackageLicenseExpression>BSD 3-Clause “New” or “Revised” License</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dramarr.Core" Version="1.0.0.1" />
+    <PackageReference Include="EntityFramework" Version="6.4.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
+  </ItemGroup>
+
+</Project>
