@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using static Dramarr.Core.Enums.EnumsHelpers;
 
 namespace Dramarr.Data.Model
 {
