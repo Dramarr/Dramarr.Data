@@ -59,7 +59,7 @@ namespace Dramarr.Data.Repository
             SqlBulkCopy objbulk = new SqlBulkCopy(con);
 
             //assign Destination table name  
-            objbulk.DestinationTableName = "Episodes";
+            objbulk.DestinationTableName = "Shows";
 
             objbulk.ColumnMappings.Add("Id", "Id");
             objbulk.ColumnMappings.Add("Title", "Title");
