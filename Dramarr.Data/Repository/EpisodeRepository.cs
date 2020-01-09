@@ -61,7 +61,7 @@ namespace Dramarr.Data.Repository
 
             objbulk.ColumnMappings.Add("Id", "Id");
             objbulk.ColumnMappings.Add("ShowId", "ShowId");
-            objbulk.ColumnMappings.Add("Url", "url");
+            objbulk.ColumnMappings.Add("Url", "Url");
             objbulk.ColumnMappings.Add("Filename", "Filename");
             objbulk.ColumnMappings.Add("Status", "Status");
             objbulk.ColumnMappings.Add("CreatedAt", "CreatedAt");
