@@ -5,13 +5,21 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Emiliano Montesdeoca</Authors>
     <Description>Data library for Dramarr</Description>
-    <PackageLicenseExpression>BSD 3-Clause “New” or “Revised” License</PackageLicenseExpression>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageLicenseFile>license.txt</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Dramarr.Core" Version="1.0.0.1" />
     <PackageReference Include="EntityFramework" Version="6.4.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="license.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
