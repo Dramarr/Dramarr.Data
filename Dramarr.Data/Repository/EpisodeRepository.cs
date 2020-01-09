@@ -2,6 +2,7 @@
 using Dramarr.Data.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
@@ -24,6 +25,52 @@ namespace Dramarr.Data.Repository
             using var db = new Context(ConnectionString);
             db.Episodes.Add(entity);
             db.SaveChanges();
+        }
+
+        public void Create(List<Episode> entities)
+        {
+            DataTable tbl = new DataTable();
+            tbl.Columns.Add(new DataColumn("Id", typeof(Guid)));
+            tbl.Columns.Add(new DataColumn("ShowId", typeof(Guid)));
+            tbl.Columns.Add(new DataColumn("Url", typeof(string)));
+            tbl.Columns.Add(new DataColumn("Filename", typeof(string)));
+            tbl.Columns.Add(new DataColumn("Status", typeof(int)));
+            tbl.Columns.Add(new DataColumn("CreatedAt", typeof(DateTime)));
+            tbl.Columns.Add(new DataColumn("UpdatedAt", typeof(DateTime)));
+
+
+            foreach (var item in entities)
+            {
+                DataRow dr = tbl.NewRow();
+                dr["Id"] = item.Id;
+                dr["ShowId"] = item.ShowId;
+                dr["Url"] = item.Url;
+                dr["Filename"] = item.Filename;
+                dr["Status"] = item.Status;
+                dr["CreatedAt"] = item.CreatedAt;
+                dr["UpdatedAt"] = item.UpdatedAt;
+
+                tbl.Rows.Add(dr);
+            }
+            SqlConnection con = new SqlConnection(ConnectionString);
+            //create object of SqlBulkCopy which help to insert  
+            SqlBulkCopy objbulk = new SqlBulkCopy(con);
+
+            //assign Destination table name  
+            objbulk.DestinationTableName = "Episodes";
+
+            objbulk.ColumnMappings.Add("Id", "Id");
+            objbulk.ColumnMappings.Add("ShowId", "ShowId");
+            objbulk.ColumnMappings.Add("Url", "url");
+            objbulk.ColumnMappings.Add("Filename", "Filename");
+            objbulk.ColumnMappings.Add("Status", "Status");
+            objbulk.ColumnMappings.Add("CreatedAt", "CreatedAt");
+            objbulk.ColumnMappings.Add("UpdatedAt", "UpdatedAt");
+
+            con.Open();
+            //insert bulk Records into DataBase.  
+            objbulk.WriteToServer(tbl);
+            con.Close();
         }
 
         public void Delete(Episode entity)
