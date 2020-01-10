@@ -51,5 +51,44 @@ namespace Dramarr.Data.Repository
         {
             throw new NotImplementedException();
         }
+
+        public void Create(List<Log> entities)
+        {
+            DataTable tbl = new DataTable();
+            tbl.Columns.Add(new DataColumn("Id", typeof(Guid)));
+            tbl.Columns.Add(new DataColumn("Type", typeof(int)));
+            tbl.Columns.Add(new DataColumn("Message", typeof(string)));
+            tbl.Columns.Add(new DataColumn("Properties", typeof(string)));
+            tbl.Columns.Add(new DataColumn("CreatedAt", typeof(DateTime)));
+
+            foreach (var item in entities)
+            {
+                DataRow dr = tbl.NewRow();
+                dr["Id"] = item.Id;
+                dr["Type"] = item.Type;
+                dr["Message"] = item.Message;
+                dr["Properties"] = item.Properties;
+                dr["CreatedAt"] = item.CreatedAt;
+
+                tbl.Rows.Add(dr);
+            }
+            SqlConnection con = new SqlConnection(ConnectionString);
+            //create object of SqlBulkCopy which help to insert  
+            SqlBulkCopy objbulk = new SqlBulkCopy(con);
+
+            //assign Destination table name  
+            objbulk.DestinationTableName = "Logs";
+
+            objbulk.ColumnMappings.Add("Id", "Id");
+            objbulk.ColumnMappings.Add("Type", "Type");
+            objbulk.ColumnMappings.Add("Message", "Message");
+            objbulk.ColumnMappings.Add("Properties", "Properties");
+            objbulk.ColumnMappings.Add("CreatedAt", "CreatedAt");
+
+            con.Open();
+            //insert bulk Records into DataBase.  
+            objbulk.WriteToServer(tbl);
+            con.Close();
+        }
     }
 }
