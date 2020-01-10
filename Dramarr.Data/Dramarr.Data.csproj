@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dramarr.Core" Version="1.0.0.1" />
+    <PackageReference Include="Dramarr.Core" Version="1.0.0.2" />
     <PackageReference Include="EntityFramework" Version="6.4.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
   </ItemGroup>

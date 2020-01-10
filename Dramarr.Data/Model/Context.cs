@@ -13,5 +13,6 @@ namespace Dramarr.Data.Model
 
         public DbSet<Show> Shows { get; set; }
         public DbSet<Episode> Episodes { get; set; }
+        public DbSet<Log> Logs { get; set; }
     }
 }
