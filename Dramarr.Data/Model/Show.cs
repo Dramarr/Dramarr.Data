@@ -48,8 +48,8 @@ namespace Dramarr.Data.Model
                     break;
                 case string s when s.ToLowerInvariant().Contains("kshow"):
                     this.Source = Source.KSHOW;
-                    urlIdentifier = url.Replace("https://kshow.to/shows/", "");
-                    name = urlIdentifier.Replace("-", " ");
+                    urlIdentifier = url.Replace("https://kshow.to/shows/", "").Replace("/", "");
+                    name = urlIdentifier.Replace("-", " ").Replace("/", "");
                     break;
                 default:
                     break;

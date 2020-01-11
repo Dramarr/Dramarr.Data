@@ -7,8 +7,10 @@ os:
   - linux
 
 before_script:
-    - dotnet restore ./Dramarr.Data.csproj
+    - dotnet restore Dramarr.Data/Dramarr.Data.csproj
+    - dotnet restore Dramarr.Data.Tests/Dramarr.Data.Tests.csproj
     
-  
 script:
-    - dotnet build ./Dramarr.Data.csproj
+    - dotnet build Dramarr.Data/Dramarr.Data.csproj
+    - dotnet build Dramarr.Data.Tests/Dramarr.Data.Tests.csproj
+    - dotnet test Dramarr.Data.Tests/Dramarr.Data.Tests.csproj
