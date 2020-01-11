@@ -34,7 +34,7 @@ namespace Dramarr.Data.Model
         public Metadata(string imageUrl, string plot, string cast, string language)
         {
             Id = Guid.NewGuid();
-            ShowId = null;
+            ShowId = new Guid();
             ImageUrl = imageUrl;
             Plot = plot;
             Cast = cast;
