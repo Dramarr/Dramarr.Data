@@ -15,10 +15,26 @@ namespace Dramarr.Data.Model
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
+        public Metadata()
+        {
+        }
+
         public Metadata(Guid showId, string imageUrl, string plot, string cast, string language)
         {
             Id = Guid.NewGuid();
             ShowId = showId;
+            ImageUrl = imageUrl;
+            Plot = plot;
+            Cast = cast;
+            Language = language;
+            CreatedAt = DateTime.UtcNow;
+            UpdatedAt = DateTime.UtcNow;
+        }
+
+        public Metadata(string imageUrl, string plot, string cast, string language)
+        {
+            Id = Guid.NewGuid();
+            ShowId = null;
             ImageUrl = imageUrl;
             Plot = plot;
             Cast = cast;
