@@ -7,12 +7,12 @@
     <Description>Data library for Dramarr</Description>
     <PackageLicenseExpression></PackageLicenseExpression>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Version>1.0.0.8</Version>
-    <FileVersion>1.0.0.8</FileVersion>
+    <Version>1.0.0.9</Version>
+    <FileVersion>1.0.0.9</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dramarr.Core" Version="1.0.0.2" />
+    <PackageReference Include="Dramarr.Core" Version="1.0.0.3" />
     <PackageReference Include="EntityFramework" Version="6.4.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
   </ItemGroup>

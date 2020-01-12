@@ -10,16 +10,27 @@ using System.Text;
 
 namespace Dramarr.Data.Repository
 {
+    /// <summary>
+    /// Show repository
+    /// </summary>
     public class ShowRepository : IRepository<Show>
     {
         public string ConnectionString { get; set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="connectionString"></param>
         public ShowRepository(string connectionString)
         {
             ConnectionString = connectionString;
             DbProviderFactories.RegisterFactory("System.Data.SqlClient", SqlClientFactory.Instance);
         }
 
+        /// <summary>
+        /// Create
+        /// </summary>
+        /// <param name="entity"></param>
         public void Create(Show entity)
         {
             using var db = new Context(ConnectionString);
@@ -27,7 +38,11 @@ namespace Dramarr.Data.Repository
             db.SaveChanges();
         }
 
-        public void BulkCreate(List<Show> entities)
+        /// <summary>
+        /// Create in bulk
+        /// </summary>
+        /// <param name="entities"></param>
+        public void Create(List<Show> entities)
         {
             DataTable tbl = new DataTable();
             tbl.Columns.Add(new DataColumn("Id", typeof(Guid)));
@@ -76,6 +91,10 @@ namespace Dramarr.Data.Repository
             con.Close();
         }
 
+        /// <summary>
+        /// Dlete
+        /// </summary>
+        /// <param name="entity"></param>
         public void Delete(Show entity)
         {
             using var db = new Context(ConnectionString);
@@ -84,18 +103,31 @@ namespace Dramarr.Data.Repository
             db.SaveChanges();
         }
 
+        /// <summary>
+        /// Select
+        /// </summary>
+        /// <returns></returns>
         public List<Show> Select()
         {
             using var db = new Context(ConnectionString);
             return db.Shows.ToList();
         }
 
+        /// <summary>
+        /// Select by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Show SelectById(Guid id)
         {
             using var db = new Context(ConnectionString);
             return db.Shows.SingleOrDefault(x => x.Id == id);
         }
 
+        /// <summary>
+        /// Update
+        /// </summary>
+        /// <param name="entity"></param>
         public void Update(Show entity)
         {
             using var db = new Context(this.ConnectionString);
