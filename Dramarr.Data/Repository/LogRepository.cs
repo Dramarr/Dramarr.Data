@@ -10,16 +10,27 @@ using System.Text;
 
 namespace Dramarr.Data.Repository
 {
+    /// <summary>
+    /// Log repository
+    /// </summary>
     public class LogRepository : IRepository<Log>
     {
         public string ConnectionString { get; set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="connectionString"></param>
         public LogRepository(string connectionString)
         {
             ConnectionString = connectionString;
             DbProviderFactories.RegisterFactory("System.Data.SqlClient", SqlClientFactory.Instance);
         }
 
+        /// <summary>
+        /// Create
+        /// </summary>
+        /// <param name="entity"></param>
         public void Create(Log entity)
         {
             using var db = new Context(ConnectionString);
@@ -27,6 +38,10 @@ namespace Dramarr.Data.Repository
             db.SaveChanges();
         }
 
+        /// <summary>
+        /// Delete
+        /// </summary>
+        /// <param name="entity"></param>
         public void Delete(Log entity)
         {
             using var db = new Context(ConnectionString);
@@ -35,23 +50,40 @@ namespace Dramarr.Data.Repository
             db.SaveChanges();
         }
 
+        /// <summary>
+        /// Select
+        /// </summary>
+        /// <returns></returns>
         public List<Log> Select()
         {
             using var db = new Context(ConnectionString);
             return db.Logs.ToList();
         }
 
+        /// <summary>
+        /// Select by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Log SelectById(Guid id)
         {
             using var db = new Context(ConnectionString);
             return db.Logs.SingleOrDefault(x => x.Id == id);
         }
 
+        /// <summary>
+        /// Update
+        /// </summary>
+        /// <param name="entity"></param>
         public void Update(Log entity)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Create in bulk
+        /// </summary>
+        /// <param name="entities"></param>
         public void Create(List<Log> entities)
         {
             DataTable tbl = new DataTable();

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using static Dramarr.Core.Enums.EnumsHelpers;
+using static Dramarr.Core.Enums.EpisodeHelpers;
 
 namespace Dramarr.Data.Model
 {
+    /// <summary>
+    /// Episode 
+    /// </summary>
     public class Episode
     {
         public Guid Id { get; set; }
@@ -15,10 +18,19 @@ namespace Dramarr.Data.Model
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public Episode()
         {
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="showId"></param>
+        /// <param name="url"></param>
+        /// <param name="filename"></param>
         public Episode(Guid showId, string url, string filename)
         {
             this.Id = Guid.NewGuid();
