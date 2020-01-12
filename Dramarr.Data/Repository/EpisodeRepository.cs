@@ -10,16 +10,27 @@ using System.Text;
 
 namespace Dramarr.Data.Repository
 {
+    /// <summary>
+    /// Episode repository
+    /// </summary>
     public class EpisodeRepository : IRepository<Episode>
     {
         public string ConnectionString { get; set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="connectionString"></param>
         public EpisodeRepository(string connectionString)
         {
             ConnectionString = connectionString;
             DbProviderFactories.RegisterFactory("System.Data.SqlClient", SqlClientFactory.Instance);
         }
 
+        /// <summary>
+        /// Create
+        /// </summary>
+        /// <param name="entity"></param>
         public void Create(Episode entity)
         {
             using var db = new Context(ConnectionString);
@@ -27,6 +38,10 @@ namespace Dramarr.Data.Repository
             db.SaveChanges();
         }
 
+        /// <summary>
+        /// Create in bulk
+        /// </summary>
+        /// <param name="entities"></param>
         public void Create(List<Episode> entities)
         {
             DataTable tbl = new DataTable();
@@ -73,6 +88,10 @@ namespace Dramarr.Data.Repository
             con.Close();
         }
 
+        /// <summary>
+        /// Delete
+        /// </summary>
+        /// <param name="entity"></param>
         public void Delete(Episode entity)
         {
             using var db = new Context(ConnectionString);
@@ -80,18 +99,31 @@ namespace Dramarr.Data.Repository
             db.SaveChanges();
         }
 
+        /// <summary>
+        /// Select
+        /// </summary>
+        /// <returns></returns>
         public List<Episode> Select()
         {
             using var db = new Context(ConnectionString);
             return db.Episodes.AsNoTracking().ToList();
         }
 
+        /// <summary>
+        /// Select by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Episode SelectById(Guid id)
         {
             using var db = new Context(ConnectionString);
             return db.Episodes.AsNoTracking().SingleOrDefault(x => x.Id == id);
         }
 
+        /// <summary>
+        /// Update
+        /// </summary>
+        /// <param name="entity"></param>
         public void Update(Episode entity)
         {
             using var db = new Context(ConnectionString);

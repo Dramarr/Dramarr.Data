@@ -10,16 +10,27 @@ using System.Text;
 
 namespace Dramarr.Data.Repository
 {
+    /// <summary>
+    /// Metadata repository
+    /// </summary>
     public class MetadataRepository : IRepository<Metadata>
     {
         public string ConnectionString { get; set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="connectionString"></param>
         public MetadataRepository(string connectionString)
         {
             ConnectionString = connectionString;
             DbProviderFactories.RegisterFactory("System.Data.SqlClient", SqlClientFactory.Instance);
         }
 
+        /// <summary>
+        /// Create
+        /// </summary>
+        /// <param name="entity"></param>
         public void Create(Metadata entity)
         {
             using var db = new Context(ConnectionString);
@@ -27,6 +38,10 @@ namespace Dramarr.Data.Repository
             db.SaveChanges();
         }
 
+        /// <summary>
+        /// Delete
+        /// </summary>
+        /// <param name="entity"></param>
         public void Delete(Metadata entity)
         {
             using var db = new Context(ConnectionString);
@@ -35,23 +50,40 @@ namespace Dramarr.Data.Repository
             db.SaveChanges();
         }
 
+        /// <summary>
+        /// Select
+        /// </summary>
+        /// <returns></returns>
         public List<Metadata> Select()
         {
             using var db = new Context(ConnectionString);
             return db.Metadatas.ToList();
         }
 
+        /// <summary>
+        /// Select by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Metadata SelectById(Guid id)
         {
             using var db = new Context(ConnectionString);
             return db.Metadatas.SingleOrDefault(x => x.Id == id);
         }
 
+        /// <summary>
+        /// Update
+        /// </summary>
+        /// <param name="entity"></param>
         public void Update(Metadata entity)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Create in bulk
+        /// </summary>
+        /// <param name="entities"></param>
         public void Create(List<Metadata> entities)
         {
             DataTable tbl = new DataTable();

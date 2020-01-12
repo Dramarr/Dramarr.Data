@@ -5,6 +5,9 @@ using static Dramarr.Core.Enums.LogHelpers;
 
 namespace Dramarr.Data.Model
 {
+    /// <summary>
+    /// Log
+    /// </summary>
     public class Log
     {
         public Guid Id { get; set; }
@@ -13,6 +16,12 @@ namespace Dramarr.Data.Model
         public string Properties { get; set; }
         public DateTime CreatedAt { get; set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="message"></param>
+        /// <param name="properties"></param>
         public Log(LogType type, string message, string properties)
         {
             Id = Guid.NewGuid();

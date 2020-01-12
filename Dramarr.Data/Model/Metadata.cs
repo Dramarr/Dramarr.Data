@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Dramarr.Data.Model
 {
+    /// <summary>
+    /// Metadata
+    /// </summary>
     public class Metadata
     {
         public Guid Id { get; set; }
@@ -15,10 +18,21 @@ namespace Dramarr.Data.Model
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public Metadata()
         {
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="showId"></param>
+        /// <param name="imageUrl"></param>
+        /// <param name="plot"></param>
+        /// <param name="cast"></param>
+        /// <param name="language"></param>
         public Metadata(Guid showId, string imageUrl, string plot, string cast, string language)
         {
             Id = Guid.NewGuid();
@@ -31,6 +45,13 @@ namespace Dramarr.Data.Model
             UpdatedAt = DateTime.UtcNow;
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="imageUrl"></param>
+        /// <param name="plot"></param>
+        /// <param name="cast"></param>
+        /// <param name="language"></param>
         public Metadata(string imageUrl, string plot, string cast, string language)
         {
             Id = Guid.NewGuid();

@@ -7,6 +7,9 @@ using static Dramarr.Core.Enums.SourceHelpers;
 
 namespace Dramarr.Data.Model
 {
+    /// <summary>
+    /// Show
+    /// </summary>
     public class Show
     {
         public Guid Id { get; set; }
@@ -18,10 +21,17 @@ namespace Dramarr.Data.Model
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public Show()
         {
         }
 
+        /// <summary>
+        /// Constructor with logic
+        /// </summary>
+        /// <param name="url"></param>
         public Show(string url)
         {
             this.Id = Guid.NewGuid();
