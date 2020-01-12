@@ -16,6 +16,6 @@ before_script:
     - dotnet restore Dramarr.Data.Tests/Dramarr.Data.Tests.csproj
     
 script:
-    - dotnet build Dramarr.Data/Dramarr.Data.csproj
-    - dotnet build Dramarr.Data.Tests/Dramarr.Data.Tests.csproj
-    - dotnet test Dramarr.Data.Tests/Dramarr.Data.Tests.csproj
+    - dotnet build Dramarr.Data/Dramarr.Data.csproj --configuration Release
+    - dotnet build Dramarr.Data.Tests/Dramarr.Data.Tests.csproj --configuration Release
+    - dotnet test Dramarr.Data.Tests/Dramarr.Data.Tests.csproj --configuration Release
